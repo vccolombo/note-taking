@@ -1,6 +1,6 @@
 const chalk = require('chalk');
 const yargs = require('yargs');
-const getNotes = require('./notes');
+const notes = require('./notes');
 
 // Create note command
 yargs.command({
@@ -18,9 +18,8 @@ yargs.command({
             type: 'string'
         }
     },
-    handler: function createNote(argv) {
-        console.log('Title: ' + argv.title);
-        console.log('Body: ' + argv.body);
+    handler: function (argv) {
+        notes.addNote(argv.title, argv.body);
     }
 });
 
