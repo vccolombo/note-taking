@@ -10,18 +10,15 @@ const addNote = function (title, body) {
     // Save to file only if title is unique
     if (title.length === 0) {
         console.log(chalk.red.inverse('Title cannot be empty!'));
-    }
-    else if (notes.some(note => note.title === title) == false) {
+    } else if (notes.some((note) => note.title === title) == false) {
         notes.push({
             title: title,
             body: body
         });
 
-
         saveNotes(notes);
         console.log(chalk.green.inverse('New note added!'));
-    }
-    else {
+    } else {
         console.log(chalk.red.inverse('Note with same title already exists!'));
     }
 }
@@ -29,9 +26,7 @@ const addNote = function (title, body) {
 const removeNote = function (title) {
     const notes = loadNotes("notes.json");
 
-    const notesDeleted = notes.filter((note) => {
-        return note.title !== title;
-    });
+    const notesDeleted = notes.filter((note) => note.title !== title);
 
     saveNotes(notesDeleted);
 
