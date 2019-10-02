@@ -1,12 +1,14 @@
 const fs = require('fs');
 const chalk = require('chalk');
 
+const NOTES_PATH = "notes.json"
+
 const getNotes = () => {
     return 'Your notes...';
 }
 
 const addNote = (title, body) => {
-    const notes = loadNotes("notes.json");
+    const notes = loadNotes();
     // Save to file only if title is unique
     if (title.length === 0) {
         console.log(chalk.red.inverse('Title cannot be empty!'));
@@ -24,7 +26,7 @@ const addNote = (title, body) => {
 }
 
 const removeNote = (title) => {
-    const notes = loadNotes("notes.json");
+    const notes = loadNotes();
 
     const notesDeleted = notes.filter((note) => note.title !== title);
 
@@ -37,14 +39,22 @@ const removeNote = (title) => {
     }
 }
 
-const saveNotes = (notes) => {
-    const notesJSON = JSON.stringify(notes);
-    fs.writeFileSync('notes.json', notesJSON);
+const listNotes = () => {
+    const notes = loadNotes();
+    console.log(chalk.bold.inverse("Your notes:\n"));
+    notes.forEach(note => {
+        console.log(note.title);
+    });
 }
 
-const loadNotes = (filePath) => {
+const saveNotes = (notes) => {
+    const notesJSON = JSON.stringify(notes);
+    fs.writeFileSync(NOTES_PATH, notesJSON);
+}
+
+const loadNotes = () => {
     try {
-        const notesJSON = fs.readFileSync(filePath, {
+        const notesJSON = fs.readFileSync(NOTES_PATH, {
             encoding: 'utf-8'
         });
         const notes = JSON.parse(notesJSON);
@@ -59,5 +69,6 @@ const loadNotes = (filePath) => {
 module.exports = {
     getNotes: getNotes,
     addNote: addNote,
-    removeNote: removeNote
+    removeNote: removeNote,
+    listNotes: listNotes
 };
