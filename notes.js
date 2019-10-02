@@ -9,10 +9,12 @@ const getNotes = () => {
 
 const addNote = (title, body) => {
     const notes = loadNotes();
+    const duplicateNote = notes.find((note) => note.title === title);
+
     // Save to file only if title is unique
     if (title.length === 0) {
         console.log(chalk.red.inverse('Title cannot be empty!'));
-    } else if (notes.some((note) => note.title === title) == false) {
+    } else if (!duplicateNote) {
         notes.push({
             title: title,
             body: body
