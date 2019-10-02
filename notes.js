@@ -8,15 +8,21 @@ const getNotes = function () {
 const addNote = function (title, body) {
     const notes = loadNotes("notes.json");
     // Save to file only if title is unique
-    if (notes.some(note => note.title === title) == false) {
+    if (title.length === 0) {
+        console.log(chalk.red.inverse('Title cannot be empty!'));
+    }
+    else if (notes.some(note => note.title === title) == false) {
         notes.push({
             title: title,
             body: body
         });
 
-        saveNotes(notes);
 
-        console.log('New note added!');
+        saveNotes(notes);
+        console.log(chalk.green.inverse('New note added!'));
+    }
+    else {
+        console.log(chalk.red.inverse('Note with same title already exists!'));
     }
 }
 
