@@ -7,8 +7,16 @@
     "dev": "nodemon ./app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vccolombo/note-taking"
+  },
+  "author": "Víctor Cora Colombo",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vccolombo/note-taking/issues"
+  },
+  "homepage": "https://github.com/vccolombo/note-taking",
   "dependencies": {
     "chalk": "^2.4.2",
     "validator": "^11.1.0",
