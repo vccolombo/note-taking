@@ -1,7 +1,7 @@
 {
   "name": "notes-app",
   "version": "1.0.0",
-  "description": "",
+  "description": "NodeJS command line app to write personal notes",
   "main": "app.js",
   "scripts": {
     "dev": "nodemon ./app.js",
@@ -12,7 +12,7 @@
     "url": "git+https://github.com/vccolombo/note-taking"
   },
   "author": "Víctor Cora Colombo",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/vccolombo/note-taking/issues"
   },
