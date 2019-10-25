@@ -1,5 +1,5 @@
 {
-  "name": "notes-app",
+  "name": "note-taking",
   "version": "1.0.0",
   "description": "NodeJS command line app to write personal notes",
   "main": "app.js",
